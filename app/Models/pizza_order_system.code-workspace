@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../Rare/00_Admin Dashboard"
+		},
+		{
+			"path": "../../../../Rare/00_Customer Panel"
+		},
+		{
+			"path": "../../../../../../../xampp/htdocs/todoList"
+		}
+	],
+	"settings": {}
+}
