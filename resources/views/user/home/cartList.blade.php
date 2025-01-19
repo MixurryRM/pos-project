@@ -17,7 +17,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <input type="hidden" id="userId" value="{{ Auth::user()->id }}">
                         @forelse ($cart as $item)
                             <tr>
                                 <th scope="row">
@@ -53,15 +52,16 @@
                                     <p class="mt-4 mb-0 total">{{ $item->price * $item->qty }} $</p>
                                 </td>
                                 <td>
-                                    <input type="hidden" class="cartId" value="{{ $item->cart_id }}">
-                                    <input type="hidden" class="productId" value="{{ $item->product_id }}">
+                                    <input type="hidden" class="productId" value="{{ $item->cart_id }}">
                                     <button class="mt-4 border btn btn-md rounded-circle bg-light remove-btn">
                                         <i class="fa fa-times text-danger"></i>
                                     </button>
                                 </td>
 
                             </tr>
-                        @endforeach
+                        @empty
+                            <h1 class="p-4 bg-warning test-dark">No Product Order!</h1>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -91,9 +91,8 @@
                             <h5 class="mb-0 ps-4 me-4">Total</h5>
                             <p class="mb-0 pe-4 finalTotal">${{ $total + 100 }}</p>
                         </div>
-                        <button @if (count($cart) == 0) disabled @endif
-                            class="px-4 py-3 mb-4 btn border-secondary rounded-pill text-primary text-uppercase ms-4"
-                            id="btn-checkout" type="button">Proceed Checkout</button>
+                        <button class="px-4 py-3 mb-4 btn border-secondary rounded-pill text-primary text-uppercase ms-4"
+                            type="button">Proceed Checkout</button>
                     </div>
                 </div>
             </div>
@@ -136,7 +135,7 @@
             //remove btn
             $('.remove-btn').click(function() {
                 $parentNode = $(this).parents('tr');
-                $cartId = $parentNode.find('.cartId').val();
+                $cartId = $parentNode.find('.productId').val();
 
                 $data = {
                     'cartId': $cartId
@@ -153,34 +152,6 @@
                 })
             })
 
-            //btn-checkout
-            $('#btn-checkout').click(function() {
-                $orderList = [];
-                $userId = $('#userId').val();
-                $orderCode = 'CL-POS' + Math.floor(Math.random() * 1000000);
-
-                $('#productTable tbody tr').each(function(index, row) {
-                    $productId = $(row).find('.productId').val();
-                    $qty = $(row).find('.qty').val();
-
-                    $orderList.push({
-                        'user_id': $userId,
-                        'product_id': $productId,
-                        'qty': $qty,
-                        'order_code': $orderCode
-                    })
-                })
-
-                $.ajax({
-                    type: 'get',
-                    url: '/user/cart/temp',
-                    dataType: 'json',
-                    data: Object.assign({}, $orderList),
-                    success: function(res) {
-                        res.status == 'success' ? location.href = '/user/payment' : ''
-                    }
-                })
-            })
         });
     </script>
 @endsection
