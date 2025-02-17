@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -47,9 +48,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('create', [ProductController::class, 'create'])->name('createProduct');
         Route::post('store', [ProductController::class, 'store'])->name('storeProduct');
         Route::get('list/{amt?}', [ProductController::class, 'productListPage'])->name('productListPage');
-        Route::get('view/{id}' , [ProductController::class,'view'])->name('viewProduct');
-        Route::get('destory/{id}' , [ProductController::class,'destory'])->name('destoryProduct');
-        Route::get('editPage/{id}',[ProductController::class,'editPage'])->name('productEditPage');
-        Route::post('update',[ProductController::class,'update'])->name('productUpdate');
+        Route::get('view/{id}', [ProductController::class, 'view'])->name('viewProduct');
+        Route::get('destory/{id}', [ProductController::class, 'destory'])->name('destoryProduct');
+        Route::get('editPage/{id}', [ProductController::class, 'editPage'])->name('productEditPage');
+        Route::post('update', [ProductController::class, 'update'])->name('productUpdate');
+    });
+
+    //payment
+    Route::group(['prefix' => 'payment'], function () {
+        Route::get('list', [PaymentController::class, 'list'])->name('paymentList');
+        Route::post('store', [PaymentController::class, 'store'])->name('storePayment');
+        Route::get('destory/{id}', [PaymentController::class, 'destory'])->name('destoryPayment');
     });
 });

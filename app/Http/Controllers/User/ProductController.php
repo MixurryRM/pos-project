@@ -53,6 +53,43 @@ class ProductController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Successfully cart deleted!'
+        ], 200);
+    }
+
+    public function productList()
+    {
+        $product = Product::get();
+        return response()->json([
+            'status' => 'success',
+            'product' => $product,
+        ], 200);
+    }
+
+    public function cartTemp(Request $request)
+    {
+        $orders = [];
+
+        foreach ($request->all() as $item) {
+            $orders[] = [
+                'user_id' => $item['user_id'],
+                'product_id' => $item['product_id'],
+                'count' => $item['qty'],
+                'order_code' => $item['order_code'],
+                'status' => 0, // Default status
+            ];
+        }
+
+        Session::put('tempCart', $orders);
+
+        return response()->json([
+            'status' => 'success'
+        ], 200);
+    }
+
+    public function payment()
+    {
+        // dd(Session::get('tempCart'));
+        return view('user.home.payment');
         ],200);
     }
 }
