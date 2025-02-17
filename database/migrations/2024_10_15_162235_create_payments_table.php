@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
             $table->string('account_number');
             $table->string('account_name');
-            $table->char('type',20);
+            $table->char('type',50);
             $table->timestamps();
         });
     }

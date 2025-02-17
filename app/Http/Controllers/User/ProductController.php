@@ -92,7 +92,7 @@ class ProductController extends Controller
 
     public function payment()
     {
-        dd(Session::get('tempCart'));
+        // dd(Session::get('tempCart'));
         return view('user.home.payment');
     }
 }

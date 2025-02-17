@@ -58,8 +58,9 @@ class UserController extends Controller
         $fields = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email,' . $userId,
+            'address' => 'nullable|max:5120',
             'phone' => 'required|min:8|max:15|unique:users,phone,' . $userId,
-            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:5120', // max 5MB
+            'profile' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:5120', // max 5MB
         ]);
 
         if ($request->hasFile('image')) {
