@@ -1,0 +1,45 @@
+Laravel project create
+======================
+
+composer create-project laravel/laravel example-app
+composer create-project laravel/laravel example-app "10.*"
+
+Composer command
+================
+
+composer -v
+php -v
+composer install  (create vendor according to composer.json)
+composer upadte   (upadte all version packages in vendor folder)
+
+Key generate
+============
+
+php artisan key:generate
+
+Cache command
+=============
+
+php artisan route:clear
+php artisan view:clear
+php artisan config:clear x 3
+php artisan config:clear
+php arisan config:cache
+
+Laravel engine (Blade)
+
+Laravel Design Pattern (MVC)
+============================
+
+MVC   (Model View Controller)
+HMVC  (Hierarchical Model View Controller)
+MVA   (Model View Adapter)
+MVP   (Model View Presenter)
+MVVM  (Model View View Model)
+
+Database command
+================
+
+php artisan db:seed
+php artisan migrate:fresh
+php artisan migrate:fresh --seed
