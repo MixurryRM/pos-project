@@ -107,7 +107,7 @@ class ProductController extends Controller
     public function order(Request $request)
     {
 
-        //payslip
+        // payslip
         $request->validate([
             'userName' => 'required',
             'phone' => 'required',
@@ -136,27 +136,28 @@ class ProductController extends Controller
         //order and clear cart
         $orders = Session::get('tempCart');
 
-        foreach ($orders as $order) {
+        foreach ($orders as $item) {
+
             Order::create([
-                'user_id' => $order['user_id'],
-                'product_id' => $order['product_id'],
-                'count' => $order['count'],
-                'order_code' => $order['order_code'],
-                'total_price' => $order['total_amt'],
-                'status' => $order['status'],
+                'user_id' => $item['user_id'],
+                'product_id' => $item['product_id'],
+                'count' => $item['count'],
+                'order_code' => $item['order_code'],
+                'total_price' => $item['total_amt'],
+                'status' => $item['status'],
             ]);
 
-            Cart::where('user_id', $order['user_id'])->delete();
-
-            return to_route('productOrderList');
+            Cart::where('user_id', $item['user_id'])->delete();
         }
+
+        return to_route('productOrderList');
     }
 
     public function orderList()
     {
-        $orders = Order::select('order_code', 'user_id', 'total_price', 'status', 'created_at')
+        $orders = Order::select('order_code', 'status', 'created_at')
             ->where('user_id', Auth::user()->id)
-            ->groupBy('order_code', 'user_id', 'total_price', 'status', 'created_at')
+            ->groupBy('order_code', 'status', 'created_at')
             ->orderBy('created_at', 'desc')
             ->get();
 

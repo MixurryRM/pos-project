@@ -71,60 +71,6 @@
     <!-- Hero End -->
 
 
-    <!-- Featurs Section Start -->
-    <div class="py-5 container-fluid featurs">
-        <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="p-4 text-center rounded featurs-item bg-light">
-                        <div class="mx-auto mb-5 featurs-icon btn-square rounded-circle bg-secondary">
-                            <i class="text-white fas fa-car-side fa-3x"></i>
-                        </div>
-                        <div class="text-center featurs-content">
-                            <h5>Free Shipping</h5>
-                            <p class="mb-0">Free on order over $300</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="p-4 text-center rounded featurs-item bg-light">
-                        <div class="mx-auto mb-5 featurs-icon btn-square rounded-circle bg-secondary">
-                            <i class="text-white fas fa-user-shield fa-3x"></i>
-                        </div>
-                        <div class="text-center featurs-content">
-                            <h5>Security Payment</h5>
-                            <p class="mb-0">100% security payment</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="p-4 text-center rounded featurs-item bg-light">
-                        <div class="mx-auto mb-5 featurs-icon btn-square rounded-circle bg-secondary">
-                            <i class="text-white fas fa-exchange-alt fa-3x"></i>
-                        </div>
-                        <div class="text-center featurs-content">
-                            <h5>30 Day Return</h5>
-                            <p class="mb-0">30 day money guarantee</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="p-4 text-center rounded featurs-item bg-light">
-                        <div class="mx-auto mb-5 featurs-icon btn-square rounded-circle bg-secondary">
-                            <i class="text-white fa fa-phone-alt fa-3x"></i>
-                        </div>
-                        <div class="text-center featurs-content">
-                            <h5>24/7 Support</h5>
-                            <p class="mb-0">Support every time fast</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Featurs Section End -->
-
-
     <!-- Fruits Shop Start-->
     <div class="py-5 container-fluid fruite">
         <div class="container py-5">
