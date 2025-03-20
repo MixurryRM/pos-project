@@ -53,12 +53,12 @@
             </div>
             <div class="col-6 offset-1">
                 <table class="table">
-                    <thead class="text-white bg-dark">
+                    <thead class="text-white bg-primary">
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Account Number</th>
-                            <th scope="col">Account Name</th>
-                            <th scope="col">Account Type</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Type</th>
                             <th scope="col">image</th>
                             <th scope="col">Actions</th>
                             <th></th>

@@ -37,7 +37,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="mx-3 sidebar-brand-text">Code Lab Studio</div>
+                <div class="mx-3 sidebar-brand-text">Fresh Fruits Studio</div>
             </a>
 
             <!-- Divider -->
@@ -45,7 +45,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-fw fa-table"></i><span>Dashboard </span></a>
+                <a class="nav-link" href="{{ route('adminDashboard') }}"><i class="fas fa-fw fa-table"></i><span>Dashboard </span></a>
             </li>
 
             <li class="nav-item">
@@ -76,7 +76,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><span>Order Board
+                <a class="nav-link" href="{{ route('orderList') }}"><i class="fa-solid fa-cart-shopping"></i><span>Order Board
                     </span></a>
             </li>
 
@@ -197,21 +197,21 @@
                 </div>
 
                 <!-- Bootstrap core JavaScript-->
-                <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                 <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
                 <!-- Core plugin JavaScript-->
                 <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
                 <!-- Custom scripts for all pages-->
-                <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+                <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
 
                 <!-- Page level plugins -->
-                <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
+                {{-- <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script> --}}
 
                 <!-- Page level custom scripts -->
-                <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
-                <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
+                {{-- <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
+                <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script> --}}
 
                 <!--image preview javascript -->
                 <script>
@@ -224,6 +224,9 @@
                         };
                     };
                 </script>
+
+                  <!-- Jquery -->
+    @yield('js-section')
 </body>
 
 </html>

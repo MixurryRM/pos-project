@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
@@ -59,5 +60,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('list', [PaymentController::class, 'list'])->name('paymentList');
         Route::post('store', [PaymentController::class, 'store'])->name('storePayment');
         Route::get('destory/{id}', [PaymentController::class, 'destory'])->name('destoryPayment');
+    });
+
+    //order
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('list', [OrderController::class, 'orderList'])->name('orderList');
+        Route::get('details/{orderCode}', [OrderController::class, 'orderDetails'])->name('orderDetails');
+        Route::get('changeStatus', [OrderController::class, 'changeStatus'])->name('orderChangeStatus');
     });
 });
