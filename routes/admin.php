@@ -67,5 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('list', [OrderController::class, 'orderList'])->name('orderList');
         Route::get('details/{orderCode}', [OrderController::class, 'orderDetails'])->name('orderDetails');
         Route::get('changeStatus', [OrderController::class, 'changeStatus'])->name('orderChangeStatus');
+        Route::get('confirm',[OrderController::class,'confirmOrder'])->name('confirmOrder');
+        Route::get('cancle',[OrderController::class,'cancleOrder'])->name('cancleOrder');
     });
 });

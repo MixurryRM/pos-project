@@ -26,7 +26,7 @@
                                     @if ($order['status'] == '0')
                                         <p class="mt-2 mb-0 rounded shadow-sm btn btn-warning">Pending</p>
                                     @elseif ($order['status'] == '1')
-                                        <p class="mt-2 mb-0 rounded shadow-sm btn btn-success">Success</p>
+                                        <p class="mt-2 mb-0 rounded shadow-sm btn btn-success">Accept</p>
                                     @else
                                         <p class="mt-2 mb-0 rounded shadow-sm btn btn-danger">Reject</p>
                                     @endif

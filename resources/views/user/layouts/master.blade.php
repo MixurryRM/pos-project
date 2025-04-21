@@ -17,6 +17,7 @@
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
@@ -78,9 +79,15 @@
                     <div class="m-3 d-flex me-0">
                         <a href="{{ route('cartList') }}" class="my-auto position-relative me-4">
                             <i class="fa fa-shopping-bag fa-2x"></i>
-                            <span
+                            {{-- <span
                                 class="px-1 position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark"
-                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span>
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span> --}}
+                        </a>
+                        <a href="{{ route('productOrderList') }}" class="my-auto position-relative me-4">
+                            <i class="fa-solid fa-list-check fs-2"></i>
+                            {{-- <span
+                                class="px-1 position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark"
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span> --}}
                         </a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">

@@ -68,13 +68,13 @@
             <h4>Order Details</h4>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped" id="productTable">
                 <thead class="text-white bg-primary">
                     <tr>
                         <th scope="col">Image</th>
                         <th scope="col">Product Name</th>
                         <th scope="col">Qty</th>
-                        <th scope="col">Current Stock</th>
+                        <th scope="col">Available Stock</th>
                         <th scope="col">Price</th>
                         <th scope="col">Total Price</th>
                     </tr>
@@ -82,6 +82,9 @@
                 <tbody>
                     @foreach ($order as $item)
                         <tr>
+                            <input type="hidden" class="orderCode" value="{{ $item->order_code }}">
+                            <input type="hidden" class="productId" value="{{ $item->product_id }}">
+                            <input type="hidden" class="qty" value="{{ $item->order_count }}">
                             <td>
                                 <img src="{{ asset('product/' . $item->product_image) }}" class="shadow-sm img-thumbnail"
                                     style="width: 4rem">
@@ -102,5 +105,59 @@
                 </tbody>
             </table>
         </div>
+        <div class="card-footer d-flex justify-content-end">
+            <button class="shadow-sm btn-confirm btn-success" @if($status != true) disabled @endif type="button">Order Confirm</button>
+            <button class="ml-3 shadow-sm btn-danger btn-cancle" type="button">Cancle</button>
+        </div>
     </div>
+@endsection
+
+@section('js-section')
+    <script>
+        $(document).ready(function() {
+            $('.btn-confirm').click(function() {
+
+                $dataList = [];
+                $orderCode = $('.orderCode').val();
+
+                $('#productTable tbody tr').each(function(index, row) {
+                    $productId = $(row).find('.productId').val();
+                    $qty = $(row).find('.qty').val();
+
+                    $dataList.push({
+                        'product_id': $productId,
+                        'qty': $qty,
+                        'order_code': $orderCode
+                    });
+                });
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/admin/order/confirm',
+                    dataType: 'json',
+                    data: Object.assign({}, $dataList),
+                    success: function(res){
+                        res.status == 'success' ? location.href = '/admin/order/list' : '';
+                    }
+                });
+
+            });
+
+            $('.btn-cancle').click(function() {
+                $orderCode = $('.orderCode').val();
+
+                $.ajax({
+                    type : 'GET',
+                    url : '/admin/order/cancle',
+                    dataType : 'json',
+                    data : {
+                        order_code : $orderCode
+                    },
+                    success: function(res){
+                        res.status == 'success' ? location.href = '/admin/order/list' : '';
+                    }
+                })
+            });
+        });
+    </script>
 @endsection
