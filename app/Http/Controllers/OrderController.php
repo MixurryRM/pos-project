@@ -38,15 +38,16 @@ class OrderController extends Controller
         $confirmStatus = [];
         $status = true;
 
-       foreach ($order as $item) {
-        array_push($confirmStatus, $item->product_stock < $item->order_count ? false : true);
-       }
+        foreach ($order as $item) {
+            array_push($confirmStatus, $item->product_stock < $item->order_count ? false : true);
+        }
 
-       foreach($confirmStatus as $item) {
-            if($item == false) {
-                $status = false; break;
+        foreach ($confirmStatus as $item) {
+            if ($item == false) {
+                $status = false;
+                break;
             }
-       }
+        }
 
         return view('admin.order.details', compact('order', 'payslipData', 'status'));
     }
@@ -55,25 +56,26 @@ class OrderController extends Controller
     {
         Order::where('order_code', $request->orderCode)->update(['status' => $request->changeValue]);
 
-        return response()->json(['status' => 'success'],200);
+        return response()->json(['status' => 'success'], 200);
     }
 
-    public function confirmOrder(Request $request) {
+    public function confirmOrder(Request $request)
+    {
 
-        Order::where('order_code', $request[0]['order_code'])->update(['status' => 1 ]);
+        Order::where('order_code', $request[0]['order_code'])->update(['status' => 1]);
 
         foreach ($request->all() as $item) {
             Product::where('id', $item['product_id'])->decrement('stock', $item['qty']);
         }
 
-        return response()->json(['status' => 'success'],200);
+        return response()->json(['status' => 'success'], 200);
     }
 
-    public function cancleOrder(Request $request) {
+    public function cancleOrder(Request $request)
+    {
 
-        Order::where('order_code', $request['order_code'])->update(['status' => 2 ]);
+        Order::where('order_code', $request['order_code'])->update(['status' => 2]);
 
-        return response()->json(['status' => 'success'],200);
-
+        return response()->json(['status' => 'success'], 200);
     }
 }

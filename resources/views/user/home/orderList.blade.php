@@ -27,6 +27,7 @@
                                         <p class="mt-2 mb-0 rounded shadow-sm btn btn-warning">Pending</p>
                                     @elseif ($order['status'] == '1')
                                         <p class="mt-2 mb-0 rounded shadow-sm btn btn-success">Accept</p>
+                                        <span class="text-danger ms-3"><i class="fa-regular fa-clock"></i> Waiting time 3 days</span>
                                     @else
                                         <p class="mt-2 mb-0 rounded shadow-sm btn btn-danger">Reject</p>
                                     @endif

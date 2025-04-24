@@ -15,7 +15,8 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h4 class="mb-3 fw-bold">{{ $product->name }}</h4>
+                            <h4 class="fw-bold">{{ $product->name }}</h4>
+                            <span class="text-danger">({{ $product->stock }} items only left!)</span>
                             <p class="mb-3">Category: {{ $product->category->name }}</p>
                             <h5 class="mb-3 fw-bold">{{ $product->price }}$</h5>
                             <div class="mb-4 d-flex">

@@ -7,6 +7,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\SaleInformationController;
 
 // Route::prefix('admin')->middleware('admin')->group(function () {
 //     Route::get('dashboard', [AdminController::class, 'adminDashboard'])->name('adminDashboard');
@@ -67,7 +68,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('list', [OrderController::class, 'orderList'])->name('orderList');
         Route::get('details/{orderCode}', [OrderController::class, 'orderDetails'])->name('orderDetails');
         Route::get('changeStatus', [OrderController::class, 'changeStatus'])->name('orderChangeStatus');
-        Route::get('confirm',[OrderController::class,'confirmOrder'])->name('confirmOrder');
-        Route::get('cancle',[OrderController::class,'cancleOrder'])->name('cancleOrder');
+        Route::get('confirm', [OrderController::class, 'confirmOrder'])->name('confirmOrder');
+        Route::get('cancle', [OrderController::class, 'cancleOrder'])->name('cancleOrder');
+    });
+
+    //sale information
+    Route::group(['prefix' => 'sale'], function () {
+        Route::get('list', [SaleInformationController::class, 'saleList'])->name('saleList');
+        Route::get('detail/{orderCode}', [SaleInformationController::class, 'saleDetail'])->name('saleDetail');
     });
 });

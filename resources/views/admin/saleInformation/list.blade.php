@@ -10,7 +10,7 @@
             </div>
 
             <div class="">
-                <form action="{{ route('orderList') }}" method="get">
+                <form action="{{ route('saleList') }}" method="get">
                     <div class="input-group">
                         <input type="text" name="searchKey" class="form-control" placeholder="Enter Search Key...">
                         <button type="submit" class="text-white btn btn-secondary"><i
@@ -35,14 +35,10 @@
                         <input type="hidden" class="orderCode" name="orderCode" value="{{ $item->order_code }}">
                         <td>{{ $item->created_at->format('j-F-Y') }}</td>
                         <td class="text-primary"><a
-                                href="{{ route('orderDetails', $item->order_code) }}">{{ $item->order_code }}</a></td>
+                                href="{{ route('saleDetail', $item->order_code) }}">{{ $item->order_code }}</a></td>
                         <td>{{ $item->user_name }}</td>
                         <td>
-                            <select name="" id="" class="form-control statusChange">
-                                <option value="0" @if ($item->status == 0) selected @endif>Pending</option>
-                                <option value="1" @if ($item->status == 1) selected @endif>Success</option>
-                                <option value="2" @if ($item->status == 2) selected @endif>Reject</option>
-                            </select>
+                            <input type="button" value="Accpet" class="btn btn-success btn-sm">
                         </td>
                     </tr>
                 @empty
@@ -54,30 +50,4 @@
         </table>
         <span class=" d-flex justify-content-end">{{ $orders->links() }}</span>
     </div>
-@endsection
-
-@section('js-section')
-    <script>
-        $(document).ready(function() {
-            $('.statusChange').change(function() {
-                $changeValue = $(this).val();
-                $orderCode = $(this).parents('tr').find('.orderCode').val();
-
-                $data = {
-                    'orderCode': $orderCode,
-                    'changeValue': $changeValue
-                }
-
-                $.ajax({
-                    url: "{{ route('orderChangeStatus') }}",
-                    method: 'GET',
-                    data: $data,
-                    dataType: 'json',
-                    success: function(res) {
-                        res.status == 'success' ? location.reload() : ''
-                    }
-                })
-            })
-        });
-    </script>
 @endsection
